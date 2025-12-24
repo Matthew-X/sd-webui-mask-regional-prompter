@@ -1,0 +1,1017 @@
+/* Mask Regional Prompter - Styles */
+/* Canvas fits viewport, no extra space */
+
+/* ===== Reset Layout Gap ===== */
+.mrp-main-wrapper,
+.mrp-main-wrapper * {
+    --layout-gap: 0 !important;
+}
+
+/* ===== Main Wrapper ===== */
+.mrp-main-wrapper {
+    background: var(--background-fill-secondary, #1e1e2e);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 8px 0;
+    gap: 0 !important;
+}
+
+/* ===== Toolbar ===== */
+.mrp-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 16px;
+    background: var(--background-fill-secondary, #1f2937);
+    flex-wrap: wrap;
+}
+
+/* ===== Groups ===== */
+.mrp-group {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: auto !important;
+    flex: 0 0 auto !important;
+}
+
+/* Override Gradio's stretch class in toolbar to center items vertically */
+.mrp-toolbar .stretch,
+.mrp-toolbar.stretch {
+    align-items: center !important;
+}
+
+/* Vertical separator between toolbar groups */
+.mrp-sep {
+    display: flex !important;
+    width: 1px;
+    height: 20px;
+    background: var(--border-color-primary, rgba(255, 255, 255, 0.15));
+    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+/* Force Gradio containers to behave */
+.mrp-group>*,
+.mrp-toolbar>* {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+}
+
+/* ===== Square Buttons ===== */
+.mrp-sq-btn {
+    --button-lg-height: auto !important;
+    --button-lg-padding: 0 !important;
+
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    border-radius: 6px !important;
+    background: var(--button-secondary-background-fill, #374151) !important;
+    border: 1px solid var(--button-secondary-border-color, rgba(255, 255, 255, 0.12)) !important;
+    color: var(--button-secondary-text-color, #e5e7eb) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+    aspect-ratio: 1 / 1 !important;
+}
+
+.mrp-sq-btn:hover {
+    background: var(--button-secondary-background-fill-hover, #4b5563) !important;
+}
+
+.mrp-sq-btn.mrp-active {
+    background: var(--button-primary-background-fill, #6366f1) !important;
+    border-color: var(--button-primary-border-color, transparent) !important;
+    color: var(--button-primary-text-color, white) !important;
+}
+
+/* Fullscreen button icons */
+.mrp-fullscreen-btn::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E");
+}
+
+.mrp-fullscreen-active-btn::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 14h6v6M20 10h-6V4M14 10l7-7M10 14l-7 7'/%3E%3C/svg%3E");
+}
+
+/* When in fullscreen, show X icon via text content (set in JS) */
+
+/* ===== Button Icons ===== */
+.mrp-brush-btn::before,
+.mrp-eraser-btn::before,
+.mrp-lasso-btn::before,
+.mrp-fit-view-btn::before,
+.mrp-fullscreen-btn::before,
+.mrp-fullscreen-active-btn::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    display: block;
+    /* Using block inside flex container for reliable centering */
+}
+
+.mrp-brush-btn::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08'%3E%3C/path%3E%3Cpath d='M7.07 14.94c-3.91 3.91-3.91 10.24 0 14.15l.4-.41a7.3 7.3 0 0 1 0-10.34l-.4-.41Z'%3E%3C/path%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m9.06 11.9 8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08'%3E%3C/path%3E%3Cpath d='M7.07 14.94c-3.91 3.91-3.91 10.24 0 14.15l.4-.41a7.3 7.3 0 0 1 0-10.34l-.4-.41Z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.mrp-eraser-btn::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21'%3E%3C/path%3E%3Cpath d='m22 21H7'%3E%3C/path%3E%3Cpath d='m5 11 9 9'%3E%3C/path%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21'%3E%3C/path%3E%3Cpath d='m22 21H7'%3E%3C/path%3E%3Cpath d='m5 11 9 9'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* Eraser toggle active state - uses red/pink gradient */
+.mrp-eraser-btn.mrp-eraser-active {
+    background: linear-gradient(135deg, #dc3545 0%, #e91e63 100%) !important;
+    border-color: #e91e63 !important;
+    color: white !important;
+    box-shadow: 0 0 8px rgba(233, 30, 99, 0.4) !important;
+}
+
+/* Small gap between eraser toggle and drawing tools */
+.mrp-tool-gap {
+    display: inline-block;
+    width: 8px;
+    min-width: 8px;
+}
+
+/* Lasso/freeform selection icon - simple polygon */
+.mrp-lasso-btn::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Cpolygon points='5,3 19,3 22,12 12,21 2,12'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2'%3E%3Cpolygon points='5,3 19,3 22,12 12,21 2,12'/%3E%3C/svg%3E");
+}
+
+/* Fit view button icon - maximize/fit icon */
+.mrp-fit-view-btn::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3H5a2 2 0 0 0-2 2v3'/%3E%3Cpath d='M21 8V5a2 2 0 0 0-2-2h-3'/%3E%3Cpath d='M3 16v3a2 2 0 0 0 2 2h3'/%3E%3Cpath d='M16 21h3a2 2 0 0 0 2-2v-3'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 3H5a2 2 0 0 0-2 2v3'/%3E%3Cpath d='M21 8V5a2 2 0 0 0-2-2h-3'/%3E%3Cpath d='M3 16v3a2 2 0 0 0 2 2h3'/%3E%3Cpath d='M16 21h3a2 2 0 0 0 2-2v-3'/%3E%3C/svg%3E");
+}
+
+/* ===== Help Button with Tooltip ===== */
+.mrp-help-btn {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: help;
+    color: var(--body-text-color-subdued, #888);
+    font-size: 18px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.mrp-help-btn:hover {
+    color: var(--button-primary-background-fill, #6366f1);
+    background: var(--background-fill-primary, #1f2937);
+}
+
+.mrp-shortcuts-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: var(--background-fill-secondary, #1f2937);
+    border: 1px solid var(--border-color-primary, #374151);
+    border-radius: 8px;
+    padding: 12px 16px;
+    min-width: 200px;
+    z-index: 1000;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.mrp-help-btn:hover .mrp-shortcuts-tooltip {
+    display: block;
+}
+
+.mrp-tooltip-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--button-primary-background-fill, #6366f1);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mrp-tooltip-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--body-text-color, #ccc);
+    padding: 4px 0;
+}
+
+.mrp-tooltip-row kbd {
+    background: var(--background-fill-primary, rgba(99, 102, 241, 0.2));
+    border: 1px solid var(--border-color-primary, rgba(99, 102, 241, 0.3));
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-family: monospace;
+    color: var(--button-primary-text-color, #a5a7fc);
+}
+
+/* ===== Regular Buttons ===== */
+.mrp-btn {
+    --button-lg-height: auto !important;
+    --button-lg-padding: 0 !important;
+
+    /* Reverting fixed height */
+    /* height: 32px !important; */
+    /* min-height: 32px !important; */
+    /* max-height: 32px !important; */
+
+    padding: 4px 14px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    /* line-height: 1 !important; */
+    border-radius: 6px !important;
+    background: var(--button-secondary-background-fill, #374151) !important;
+    border: 1px solid var(--button-secondary-border-color, rgba(255, 255, 255, 0.12)) !important;
+    color: var(--button-secondary-text-color, #e0e0e0) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+}
+
+.mrp-btn:hover {
+    background: var(--button-secondary-background-fill-hover, #4b5563) !important;
+}
+
+.mrp-btn.mrp-primary {
+    background: var(--button-primary-background-fill, #6366f1) !important;
+    border-color: var(--button-primary-border-color, transparent) !important;
+    color: var(--button-primary-text-color, white) !important;
+}
+
+/* ===== Labels & Units ===== */
+.mrp-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--body-text-color-subdued, #888);
+    margin: 0 4px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    /* height: 32px; remove fixed height so it centers with whatever */
+}
+
+.mrp-unit {
+    font-size: 10px;
+    color: var(--body-text-color-subdued, #666);
+    margin-left: 1px;
+    margin-right: 6px;
+    display: inline-flex;
+    align-items: center;
+    /* height: 32px; */
+}
+
+.mrp-sep {
+    width: 1px;
+    height: 20px;
+    background: var(--border-color-primary, rgba(255, 255, 255, 0.12));
+    margin: 0 8px;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+/* ===== Number Inputs - Editable ===== */
+.mrp-num-input {
+    position: relative;
+    width: 60px !important;
+    min-width: 60px !important;
+    max-width: 60px !important;
+    height: 32px !important;
+    gap: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+.mrp-num-input input {
+    text-align: center !important;
+    padding: 0 18px 0 4px !important;
+    /* Make room for arrows */
+    font-size: 12px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    background: var(--input-background-fill, #374151) !important;
+    border: 1px solid var(--input-border-color, rgba(255, 255, 255, 0.12)) !important;
+    border-radius: 6px !important;
+    color: var(--body-text-color, #e0e0e0) !important;
+    cursor: text !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    pointer-events: auto !important;
+    /* Vital for interaction */
+    -moz-appearance: textfield !important;
+}
+
+.mrp-num-input input:disabled,
+.mrp-num-input input[readonly] {
+    opacity: 1 !important;
+    cursor: text !important;
+    background: var(--input-background-fill, #374151) !important;
+    color: var(--body-text-color, #e0e0e0) !important;
+    pointer-events: auto !important;
+}
+
+.mrp-num-input input::-webkit-outer-spin-button,
+.mrp-num-input input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+}
+
+.mrp-num-input input:focus {
+    border-color: var(--input-border-color-focus, #6366f1) !important;
+    outline: none !important;
+}
+
+/* ===== Disabled State (e.g. Brush Size when Lasso active) ===== */
+.mrp-disabled {
+    opacity: 0.4 !important;
+    pointer-events: none !important;
+}
+
+.mrp-disabled input {
+    cursor: not-allowed !important;
+    background: var(--input-background-fill, #374151) !important;
+    color: var(--body-text-color-subdued, #666) !important;
+}
+
+.mrp-disabled .mrp-label {
+    color: var(--body-text-color-subdued, #555) !important;
+}
+
+/* ===== Arrow Buttons ===== */
+.mrp-arrow {
+    position: absolute;
+    right: 3px;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: var(--body-text-color-subdued, #888);
+    cursor: pointer;
+    border-radius: 3px;
+    z-index: 10;
+    user-select: none;
+}
+
+.mrp-arrow:hover {
+    background: var(--button-primary-background-fill, rgba(99, 102, 241, 0.3));
+    color: var(--button-primary-text-color, #fff);
+}
+
+.mrp-arrow-up {
+    top: 2px;
+}
+
+.mrp-arrow-down {
+    bottom: 2px;
+}
+
+/* ===== Canvas Editor - FITS VIEWPORT ===== */
+.mrp-canvas-editor {
+    background: var(--background-fill-primary, #0a0a14);
+    min-height: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0 !important;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mrp-editor-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 400px;
+    color: var(--body-text-color-subdued, #555);
+    font-size: 13px;
+    border: 2px dashed var(--border-color-primary, rgba(255, 255, 255, 0.1));
+    margin: 10px;
+    border-radius: 8px;
+}
+
+/* Viewport fills available space - uses transform-based panning */
+.mrp-editor-viewport {
+    flex: 1;
+    overflow: hidden;
+    /* No scrollbars - panning via transform */
+    display: flex;
+    align-items: flex-start;
+    /* Align to top-left for transform origin */
+    justify-content: flex-start;
+    background: var(--background-fill-primary, #0a0a14);
+    min-height: 350px;
+    max-height: 600px;
+    /* Reasonable max in non-fullscreen */
+    position: relative;
+}
+
+.mrp-editor-viewport.mrp-drag-over {
+    background: var(--background-fill-secondary, rgba(99, 102, 241, 0.1));
+    border: 2px dashed var(--button-primary-background-fill, #6366f1);
+}
+
+/* Canvas wrapper - fixed size, canvas scales via transform */
+.mrp-canvas-wrapper {
+    display: block;
+    overflow: visible;
+    /* Allow scaled canvas to be visible outside wrapper */
+    flex-shrink: 0;
+}
+
+.mrp-main-canvas {
+    cursor: crosshair;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    display: block;
+}
+
+/* ===== Layers Panel ===== */
+.mrp-layers-panel {
+    background: var(--background-fill-secondary, #1f2937);
+    padding: 8px;
+    flex-shrink: 0;
+}
+
+.mrp-layers-list {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 12px;
+}
+
+.mrp-layer-thumb {
+    position: relative;
+    width: 58px;
+    min-width: 58px;
+    background: var(--background-fill-primary, #111827);
+    border: 2px solid var(--border-color-primary, rgba(255, 255, 255, 0.1));
+    border-radius: 6px;
+    padding: 3px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mrp-layer-thumb:hover {
+    border-color: var(--border-color-primary, rgba(255, 255, 255, 0.3));
+    transform: translateY(-2px);
+}
+
+.mrp-layer-thumb.mrp-layer-active {
+    border-color: var(--button-primary-background-fill, #6366f1);
+    box-shadow: 0 0 10px var(--button-primary-background-fill, rgba(99, 102, 241, 0.3));
+}
+
+.mrp-layer-thumb.mrp-layer-base {
+    border-color: var(--border-color-primary, rgba(255, 255, 255, 0.2));
+    opacity: 0.7;
+}
+
+.mrp-layer-thumb.mrp-layer-add {
+    border-style: dashed;
+    justify-content: center;
+}
+
+.mrp-add-icon {
+    font-size: 20px;
+    color: var(--body-text-color-subdued, #555);
+}
+
+.mrp-thumb-canvas {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    background: var(--background-fill-secondary, #1a1a2e);
+}
+
+.mrp-layer-name {
+    font-size: 9px;
+    margin-top: 2px;
+    color: var(--body-text-color, #777);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 50px;
+}
+
+/* ===== Layer Delete ===== */
+.mrp-layer-delete {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 18px;
+    height: 18px;
+    background: rgba(220, 53, 69, 0.9);
+    border-radius: 4px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.mrp-layer-thumb:hover .mrp-layer-delete {
+    display: flex;
+}
+
+.mrp-layer-delete:hover {
+    background: rgba(220, 53, 69, 1);
+}
+
+/* ===== Bottom Bar ===== */
+.mrp-bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 16px;
+    background: var(--background-fill-secondary, #1f2937);
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+/* ===== Prompts ===== */
+.mrp-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 5%, var(--border-color-primary, rgba(255, 255, 255, 0.1)) 50%, transparent 95%);
+    margin: 10px 0;
+}
+
+.mrp-prompts {
+    padding: 0 4px;
+    gap: 0 !important;
+}
+
+.mrp-prompts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.mrp-prompt {
+    gap: 0 !important;
+    width: 100%;
+}
+
+.mrp-prompt textarea {
+    border-radius: 6px !important;
+    border: 1px solid var(--input-border-color, rgba(255, 255, 255, 0.2)) !important;
+    background: var(--input-background-fill, rgba(0, 0, 0, 0.2)) !important;
+    font-size: 13px !important;
+    width: 100%;
+}
+
+.mrp-prompt textarea:focus {
+    border-color: var(--input-border-color-focus, #6366f1) !important;
+    background: var(--input-background-fill-focus, rgba(0, 0, 0, 0.3)) !important;
+}
+
+.mrp-prompt-base textarea {
+    border-left: 3px solid #4a6fa5 !important;
+    background: linear-gradient(90deg, rgba(74, 111, 165, 0.15) 0%, var(--input-background-fill, rgba(0, 0, 0, 0.2)) 15%) !important;
+}
+
+.mrp-prompt-neg textarea {
+    border-left: 3px solid #5a5a6a !important;
+}
+
+/* Dynamic Prompt Style - Colors applied inline via JS */
+.mrp-prompt-dynamic textarea {
+    background: linear-gradient(90deg, var(--layer-color-bg, rgba(255, 255, 255, 0.05)) 0%, var(--input-background-fill, rgba(0, 0, 0, 0.2)) 15%) !important;
+    border-left: 3px solid var(--layer-color, #777) !important;
+}
+
+.mrp-prompt-base label span {
+    color: #4a6fa5 !important;
+    font-size: 12px !important;
+}
+
+.mrp-prompt-neg label span {
+    color: #888 !important;
+    font-size: 12px !important;
+}
+
+/* Generic dynamic label style */
+.mrp-prompt-dynamic label span {
+    color: var(--layer-color, #777) !important;
+    font-size: 12px !important;
+}
+
+/* ===== Fullscreen ===== */
+.mrp-fullscreen-active {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 10000 !important;
+    background: var(--background-fill-primary, #0a0a14) !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+}
+
+/* Toolbar fixed at top in fullscreen */
+.mrp-fullscreen-active .mrp-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    flex-shrink: 0;
+}
+
+/* Hide the bottom bar (canvas creation controls) in fullscreen */
+.mrp-fullscreen-active .mrp-bottom-bar {
+    display: none !important;
+}
+
+/* Canvas editor takes remaining space between fixed bars */
+.mrp-fullscreen-active .mrp-canvas-editor {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin-top: 44px;
+    /* Height of toolbar */
+    margin-bottom: 80px;
+    /* Height of layers panel */
+}
+
+/* Viewport fills the space, no scrollbars - panning via transform */
+.mrp-fullscreen-active .mrp-editor-viewport {
+    flex: 1;
+    min-height: 0;
+    max-height: none !important;
+    overflow: hidden !important;
+    /* No scrollbars - panning via transform */
+    position: relative;
+}
+
+/* Layers panel fixed at bottom in fullscreen */
+.mrp-fullscreen-active .mrp-layers-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    background: var(--background-fill-secondary, #1f2937);
+    border-top: 1px solid var(--border-color-primary, rgba(255, 255, 255, 0.1));
+}
+
+/* ===== Remove all gaps ===== */
+.mrp-main-wrapper .block,
+.mrp-main-wrapper .form,
+.mrp-main-wrapper .gap {
+    gap: 0 !important;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .mrp-toolbar {
+        gap: 4px;
+        padding: 6px 10px;
+    }
+
+    .mrp-sq-btn {
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px !important;
+        min-height: 28px !important;
+        max-width: 28px !important;
+        max-height: 28px !important;
+        font-size: 14px !important;
+    }
+
+    .mrp-num-input {
+        width: 50px !important;
+        min-width: 50px !important;
+    }
+
+    .mrp-canvas-editor {
+        min-height: 280px;
+    }
+}
+
+/* ===== SD WebUI Prompt Disabled State ===== */
+/* Applied when Mask Regional Prompter is enabled */
+.mrp-sd-prompt-disabled {
+    position: relative;
+    opacity: 0.6 !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+.mrp-sd-prompt-disabled::after {
+    content: "Using Regional Prompts";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--button-primary-background-fill, #6366f1);
+    color: var(--button-primary-text-color, white);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Target textareas specifically for additional styling */
+textarea.mrp-sd-prompt-disabled,
+.mrp-sd-prompt-disabled textarea {
+    background: var(--input-background-fill, #374151) !important;
+    border: 1px solid var(--input-border-color, rgba(255, 255, 255, 0.12)) !important;
+    border-radius: 6px !important;
+    color: var(--body-text-color-subdued, #888) !important;
+    cursor: not-allowed !important;
+}
+
+/* Hide the overlay text on textareas (let parent show it) */
+textarea.mrp-sd-prompt-disabled::after {
+    display: none !important;
+}
+
+/* ===== Save/Load Section ===== */
+.mrp-save-load {
+    margin-top: 8px;
+}
+
+/* ===== Save/Load Section ===== */
+.mrp-save-load {
+    padding: 8px 0;
+}
+
+/* Settings row - align checkbox and number at bottom */
+.mrp-settings-row {
+    align-items: flex-end !important;
+    gap: 16px !important;
+}
+
+/* Compact number input for Max Auto-Saves - matches editor style */
+.mrp-compact-number {
+    max-width: 120px !important;
+    min-width: 80px !important;
+}
+
+.mrp-compact-number input {
+    text-align: center !important;
+    height: 32px !important;
+    font-size: 12px !important;
+    background: var(--input-background-fill, #374151) !important;
+    border: 1px solid var(--input-border-color, rgba(255, 255, 255, 0.12)) !important;
+    border-radius: 6px !important;
+    color: var(--body-text-color, #e0e0e0) !important;
+}
+
+.mrp-compact-number input:focus {
+    border-color: var(--input-border-color-focus, #6366f1) !important;
+    outline: none !important;
+}
+
+/* Save row - proper alignment */
+.mrp-save-row {
+    align-items: flex-end !important;
+    gap: 8px !important;
+}
+
+/* Save button - matches editor button styles */
+.mrp-save-btn,
+#mrp_save_btn_t2i,
+#mrp_save_btn_i2i {
+    height: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+    padding: 0 16px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 42px !important;
+    border-radius: 6px !important;
+    background: var(--button-primary-background-fill, #6366f1) !important;
+    border: 1px solid var(--button-primary-border-color, transparent) !important;
+    color: var(--button-primary-text-color, white) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.mrp-save-btn:hover,
+#mrp_save_btn_t2i:hover,
+#mrp_save_btn_i2i:hover {
+    background: var(--button-primary-background-fill-hover, #4f46e5) !important;
+}
+
+/* Match textbox styling in save row */
+.mrp-save-row .gradio-textbox textarea,
+.mrp-save-row .gradio-textbox input {
+    height: 42px !important;
+    min-height: 42px !important;
+    font-size: 13px !important;
+    background: var(--input-background-fill, #374151) !important;
+    border: 1px solid var(--input-border-color, rgba(255, 255, 255, 0.12)) !important;
+    border-radius: 6px !important;
+    color: var(--body-text-color, #e0e0e0) !important;
+    padding: 8px 12px !important;
+}
+
+.mrp-save-row .gradio-textbox textarea:focus,
+.mrp-save-row .gradio-textbox input:focus {
+    border-color: var(--input-border-color-focus, #6366f1) !important;
+    outline: none !important;
+}
+
+/* Recent saves section */
+.mrp-recent-files {
+    margin-top: 8px;
+}
+
+/* Recent Files Header */
+.mrp-recent-header {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--body-text-color-subdued, #888);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border-color-primary, rgba(255, 255, 255, 0.1));
+}
+
+/* Recent Files Empty State */
+.mrp-recent-empty {
+    text-align: center;
+    padding: 24px;
+    color: var(--body-text-color-subdued, #666);
+    font-style: italic;
+}
+
+/* Recent Files Grid - Horizontal scrollable row */
+.mrp-recent-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 12px 8px;
+    margin: 0;
+}
+
+/* Recent file items - thumbnail cards */
+.mrp-recent-item {
+    position: relative;
+    width: 140px;
+    min-width: 140px;
+    height: 100px;
+    background: var(--background-fill-primary, #111827);
+    border: 1px solid #555;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mrp-recent-item:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+
+.mrp-recent-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Name overlay - top left, visible on hover */
+.mrp-recent-name-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 6px 8px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.mrp-recent-item:hover .mrp-recent-name-overlay {
+    opacity: 1;
+}
+
+/* Delete button overlay - bottom right, visible on hover */
+.mrp-recent-delete-overlay {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    background: rgba(40, 40, 50, 0.85);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease, background 0.15s ease;
+}
+
+.mrp-recent-item:hover .mrp-recent-delete-overlay {
+    opacity: 1;
+    background: rgba(80, 80, 90, 0.9);
+}
+
+.mrp-recent-delete-overlay:hover {
+    background: #dc3545 !important;
+}
+
+/* Scrollbar for recent files */
+.mrp-recent-grid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mrp-recent-grid::-webkit-scrollbar-track {
+    background: var(--background-fill-secondary, #1f2937);
+    border-radius: 3px;
+}
+
+.mrp-recent-grid::-webkit-scrollbar-thumb {
+    background: var(--border-color-primary, #4b5563);
+    border-radius: 3px;
+}
+
+.mrp-recent-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--button-secondary-background-fill-hover, #6b7280);
+}
