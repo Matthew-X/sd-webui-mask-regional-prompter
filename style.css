@@ -792,10 +792,6 @@ textarea.mrp-sd-prompt-disabled::after {
 /* ===== Save/Load Section ===== */
 .mrp-save-load {
     margin-top: 8px;
-}
-
-/* ===== Save/Load Section ===== */
-.mrp-save-load {
     padding: 8px 0;
 }
 
