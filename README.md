@@ -2,6 +2,10 @@
 
 A Stable Diffusion WebUI (Forge/reForge compatible) extension for region-based prompting using color-coded masks.
 
+> **Note:** This extension is currently in early development. Please be aware that you may encounter bugs or unexpected behaviors.
+
+![Generation Result](example%20generation%20result.png)
+
 ## ✨ Features
 
 *   **Custom Mask Editor**: HTML5 Canvas editor with brush and lasso tools.
@@ -10,6 +14,20 @@ A Stable Diffusion WebUI (Forge/reForge compatible) extension for region-based p
 *   **Base Image Support**: Drag and drop a reference image to draw over.
 *   **Save & Load**: Save and restore your mask/prompt configurations.
 *   **Keyboard Shortcuts**: `B` for Brush, `L` for Lasso, `E` for Eraser toggle, `[`/`]` for brush size, and more.
+
+## 📸 Examples
+
+### Mask Interface
+The extension provides a full-featured mask editor directly in the WebUI. You can upload a **Base Image** to serve as a reference, allowing you to easily trace and mask specific areas of your composition.
+![Mask Editor](example%20editor.png)
+
+### Regional Prompts & Management
+Define prompts for each region independently. Save your layer setups to recall them later.
+![Prompts and Save/Load](example%20prompts%20and%20save_load.png)
+
+### Advanced Prompting Capabilities
+You can use LoRAs and other standard prompt features within individual regions.
+![LoRA in Prompts](example%20lora%20in%20prompts.png)
 
 ## 📦 Installation
 
@@ -43,6 +61,15 @@ A Stable Diffusion WebUI (Forge/reForge compatible) extension for region-based p
 | `Ctrl+0`  | Fit to Screen    |
 | `Space`   | Pan (Hold)       |
 
+## 🤝 Compatibility & Integration
+
+*   **Integrated Support**: Works seamlessly with [a1111-sd-webui-tagcomplete](https://github.com/DominikDoom/a1111-sd-webui-tagcomplete) for prompt autocompletion and [stable-diffusion-webui-state](https://github.com/ilian6806/stable-diffusion-webui-state) for preserving extension state across reloads.
+*   **ControlNet usage**: Regional prompting results are often significantly improved when used in combination with ControlNet.
+
+## 🙏 Credits
+
+*   Implementation concepts and inspiration drawn from [sd-webui-regional-prompter](https://github.com/hako-mikan/sd-webui-regional-prompter) by **hako-mikan**.
+
 ## 📜 License
 
-MIT License
+GNU AFFERO GENERAL PUBLIC LICENSE
