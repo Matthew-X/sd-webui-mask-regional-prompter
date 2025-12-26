@@ -67,13 +67,9 @@
         }
     }
 
-    // ==================== Tag Autocomplete Integration ====================
-    // Register textareas with sd-webui-tagcomplete for tag autocompletion
     function registerWithTagcomplete(textareas) {
-        // tagcomplete exposes addAutocompleteToArea globally when loaded
         if (typeof addAutocompleteToArea === 'function') {
             textareas.forEach(ta => {
-                // Only register if not already registered (check for 'autocomplete' class)
                 if (!ta.classList.contains('autocomplete')) {
                     addAutocompleteToArea(ta);
                 }
@@ -81,7 +77,6 @@
         }
     }
 
-    // Register base prompt fields with tagcomplete on page load
     function setupTagcompleteForBasePrompts() {
         ['t2i', 'i2i'].forEach(tabId => {
             const basePrompt = document.querySelector(`#mrp_base_prompt_${tabId} textarea`);
@@ -97,7 +92,7 @@
         constructor(containerId, tabId) {
             this.containerId = containerId;
             this.tabId = tabId;
-            this.layerPrompts = {}; // Storage for dynamic prompts: { "1": "text" }
+            this.layerPrompts = {};
             this.container = null;
             this.mainCanvas = null;
             this.ctx = null;
@@ -1018,10 +1013,8 @@
                 container.appendChild(wrapper);
             }
 
-            // Initial sync of dump
             updatePromptsDump(this.tabId);
 
-            // Register new textareas with tagcomplete for autocompletion
             setTimeout(() => {
                 const textareas = container.querySelectorAll('textarea');
                 registerWithTagcomplete(Array.from(textareas));
@@ -2545,10 +2538,30 @@
         setTimeout(setupAutoSaveOnGenerate, 1500);
     }
 
-    // Initialize tagcomplete for base prompt fields
-    // Wait for tagcomplete to load (it typically loads after other extensions)
-    setTimeout(() => {
-        setupTagcompleteForBasePrompts();
-    }, 3000);
+    let mrpTagcompleteBaseInit = false;
+    const tagcompleteCheckInterval = setInterval(() => {
+        if (mrpTagcompleteBaseInit) {
+            clearInterval(tagcompleteCheckInterval);
+            return;
+        }
+
+        if (typeof addAutocompleteToArea !== 'function' || typeof TAC_CFG === 'undefined' || !TAC_CFG) {
+            return;
+        }
+
+        ['t2i', 'i2i'].forEach(tabId => {
+            const basePrompt = document.querySelector(`#mrp_base_prompt_${tabId} textarea`);
+            const baseNeg = document.querySelector(`#mrp_base_neg_prompt_${tabId} textarea`);
+
+            [basePrompt, baseNeg].forEach(ta => {
+                if (ta && !ta.classList.contains('autocomplete')) {
+                    addAutocompleteToArea(ta);
+                }
+            });
+        });
+
+        mrpTagcompleteBaseInit = true;
+        clearInterval(tagcompleteCheckInterval);
+    }, 500);
 
 })();
