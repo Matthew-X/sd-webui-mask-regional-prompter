@@ -673,11 +673,22 @@
             this.setupDragAndDrop();
             this.syncPromptFields();
 
-            const stateEl = document.querySelector(`#mrp_mask_data_${this.tabId} textarea`);
-            if (stateEl) {
-                stateEl.value = '';
-                stateEl.dispatchEvent(new Event('input', { bubbles: true }));
-            }
+            // Clear all hidden data fields to ensure state extension saves empty state
+            const fieldsToReset = [
+                `#mrp_mask_data_${this.tabId} textarea`,
+                `#mrp_base_image_data_${this.tabId} textarea`,
+                `#mrp_layer_data_${this.tabId} textarea`,
+                `#mrp_composite_data_${this.tabId} textarea`,
+                `#mrp_prompts_dump_${this.tabId} textarea`
+            ];
+
+            fieldsToReset.forEach(selector => {
+                const el = document.querySelector(selector);
+                if (el && el.value) {
+                    el.value = '';
+                    el.dispatchEvent(new Event('input', { bubbles: true }));
+                }
+            });
         }
 
         fitToScreen() {
