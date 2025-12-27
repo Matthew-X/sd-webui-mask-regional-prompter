@@ -465,7 +465,7 @@ class MaskRegionProcessor:
 
         def forward(x: Tensor, context: Tensor | None = None, mask: Tensor | None = None, **kwargs: Any) -> Tensor:
             if not processor.active or len(processor.regmasks) == 0:
-                return module._original_forward(x, context, mask, **kwargs)
+                return module._original_forward(x, context, mask=mask, **kwargs)
 
             h = module.heads
             xs = x.size()[1]
@@ -479,7 +479,7 @@ class MaskRegionProcessor:
             num_chunks = total_tokens // TOKENSCON
 
             if num_chunks <= 1:
-                return module._original_forward(x, context, mask, **kwargs)
+                return module._original_forward(x, context, mask=mask, **kwargs)
 
             ftrans = Resize((dsh, dsw), interpolation=InterpolationMode("nearest"))
 
